@@ -3,6 +3,10 @@
 module CliProject
   class Recipe 
     
-    
-  end
+    def search
+      
+      #get user response
+      
+    end
+  
 end
