@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Colleen Halpenny'"]
   spec.email         = ["'cp.halpenny@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Displays matching recipes by ingredient from API}
+  spec.description   = %q{CLI program to search for and display matching recipes by ingredient from API}
+  spec.homepage      = "https://github.com/chalpenny/cli_project"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -32,10 +32,11 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  #spec.bindir        = "exe"
+  spec.executables   = ["cli_project"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
+  # will need to un-comment this out before continuing: spec.add_dependency "nokogiri"
 end
