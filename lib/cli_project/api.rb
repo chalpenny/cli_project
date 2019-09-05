@@ -10,6 +10,6 @@ module CliProject
       data = open("http://www.recipepuppy.com/api/").read
       JSON.parse(data)
     end
-    
+     #this is a test line
   end
 end
