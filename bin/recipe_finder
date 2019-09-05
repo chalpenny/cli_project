@@ -1,8 +1,8 @@
-!/usr/bin/env ruby
+#!/usr/bin/env ruby
 
-require_relative "./lib/api"
-require_relative "./lib/cli"
-require_relative "./lib/recipe"
+require "bundler"
+require "bundler/setup"
+require_relative "../lib/cli_project"
 
 
-Recipe.new.search
+CliProject::Recipe.new.start

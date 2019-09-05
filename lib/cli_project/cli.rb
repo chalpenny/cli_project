@@ -1,17 +1,30 @@
     binding.pry
+puts "Hello from CliProject::CLI"
 
 
 module CliProject
   class CLI  
      
-     def greeting
-             #greeting
-       puts "Hello and welcome to your recipe finder.  What do you want to search for?
+     def start 
+       #greeting
+       #puts "Hello and welcome to your recipe finder.  What do you want to search for?
        
-       Search for an ingredient by number:
+       #Search for an ingredient by number:
        
-       LIST <<-
+       puts "Hello and welcome to your recipe finder CLI!"
+       @input = nil 
+       menu
+       while @input != "exit" && @input != "quit"
+        
+      end
+     end
+         
+    def menu
+      puts <<- LIST
        1. hardcode list, or get from API"
+       2. other ingredient
+       or type "exit" or "quit" at any time to exit the program.
+       LIST
      end
      
       #instructions - enter an ingredient(s), keywords, 

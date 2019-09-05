@@ -1,3 +1,4 @@
+puts "Hello from CliProject::Recipe"
 
 
 module CliProject
