@@ -9,6 +9,20 @@ module CliProject
     def self.list_recipes
       data = open("http://www.recipepuppy.com/api/").read
       JSON.parse(data)
+      data.each do
+        # data[0] = name
+        # data[1] = link
+        # data [2] = ingredients
+      end
     end
+
+    def get_recipes
+      
+    end
+
+    def get_ingredients
+
+    end
+
   end
 end
