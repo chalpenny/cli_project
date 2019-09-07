@@ -9,21 +9,22 @@ module CliProject
        puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
        @input = nil 
        menu
-       while @input != "exit" && @input != "quit"
+       while @input != "exit" 
         @input = gets.chomp
-        if @input == "help" || @input == "menu"
+        if @input == "menu"
           menu
         elsif @input == "1"
           print_recipes
           puts "What number recipe would you like to see? (1-x)"
           @input == gets.chomp 
-          # Show the corresponding ingredients list.  Ask if they want to get the link to recipe, or go back to list NOTE: do i need an ingredients class?  
-          # 'type 'menu' to go back to menu' / or type 'menu'
+          # Show the corresponding ingredients list. 
+          puts "Do you want to get the link to recipe, or go back to list?"  
+          puts "or type 'menu' or 'exit'"
         elsif @input == "2"
-          # Print list of ingredients
-          # 'What ingredient would you like to see recipes for? (type 1 - x') / or type 'menu'
+          print_ingredients
+          puts "What ingredient would you like to see recipes for? (type 1 - x')"
+          puts "or type 'menu' or 'exit'"
           # Get input, return recipe names. Ask if they want to get the link to recipe, or go back to list
-          # 'type 'menu' to go back to menu' / or type 'menu'
         elsif @input == "3"
           # You can search by up to 3 ingredients
           # Enter ingredient 1:
@@ -32,10 +33,10 @@ module CliProject
           # Here are your results:
           # Sorry, nothing matches your search.  Try again, or press 2 to see the list of possible ingredients. / 
           #'type 'menu' to go back to menu' / or type 'menu'
-        elsif @input == "exit" || @input == "quit"
+        elsif @input == "exit" 
 
         else
-          puts "Sorry, we don't have any recipes that match.  Try typing 'help' or 'menu' to search again"
+          puts "Sorry, we don't have any recipes that match.  Try typing 'menu' to start again"
         end
       end
       puts "I hope you found a great recipe! Happy cooking!"
@@ -45,9 +46,9 @@ module CliProject
       puts <<-LIST
        1. Browse recipes
        2. Browse ingredients
-       3. Search by multiple ingredients
-       Type 'help' or 'menu' to see the menu again
-       or type "exit" or "quit" at any time to exit the program.
+       3. Search by ingredients
+       Type 'menu' to see the menu again
+       or type "exit" at any time.
        LIST
      end
      
@@ -64,7 +65,7 @@ module CliProject
 
     def prompt_for_input
       @input = gets.chomp
-     # method to make sure it's valid
+     # method to make sure it's valid?
     end
 
 

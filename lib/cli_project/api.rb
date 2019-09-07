@@ -6,25 +6,20 @@ require "pry"
 
 module CliProject
   class API 
-    #attr_accessor :name
     
-    
-    def list_recipes
+    @@all = []
+
+    def self.list_recipes
+      #@@all = []
       data = open("http://www.recipepuppy.com/api/").read
       result = JSON.parse(data)
-      @recipes = result["results"]
-        
-        #link = recipes[1] 
-        #ingredients = recipes[2] 
-        binding.pry
+      
+     #binding.pry
     end
 
-    def get_recipes
-      name = @recipes.each {|array| array[0]}
-    end
-
-    def get_ingredients
-
+    def self.all
+      @@all << list_recipes["results"]
+     #binding.pry
     end
 
   end
