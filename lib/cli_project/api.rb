@@ -2,22 +2,25 @@ puts "Hello from CliProject::API"
 
 require "open-uri"
 require "json"
+require "pry"
 
 module CliProject
   class API 
+    #attr_accessor :name
     
-    def self.list_recipes
+    
+    def list_recipes
       data = open("http://www.recipepuppy.com/api/").read
-      JSON.parse(data)
-      data.each do
-        # data[0] = name
-        # data[1] = link
-        # data [2] = ingredients
-      end
+      result = JSON.parse(data)
+      @recipes = result["results"]
+        
+        #link = recipes[1] 
+        #ingredients = recipes[2] 
+        #binding.pry
     end
 
     def get_recipes
-      
+      name = @recipes.each {|array| array[0]}
     end
 
     def get_ingredients

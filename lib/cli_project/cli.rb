@@ -52,7 +52,8 @@ module CliProject
      end
      
      def print_recipes
-      Recipe.all.collect.with_index(1) do |recipe, index|
+      Recipe.all.collect
+      .with_index(1) do |recipe, index|
         puts "#{index}. #{recipe}"
      end
     end
