@@ -16,7 +16,7 @@ module CliProject
         
         #link = recipes[1] 
         #ingredients = recipes[2] 
-        #binding.pry
+        binding.pry
     end
 
     def get_recipes

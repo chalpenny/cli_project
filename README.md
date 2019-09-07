@@ -1,4 +1,4 @@
-Welcome to your Beatles song locator!
+Welcome to your handy recipe locator!
 
 ## Installation
 
