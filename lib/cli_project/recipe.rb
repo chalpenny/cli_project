@@ -6,18 +6,27 @@ module CliProject
   class Recipe 
     attr_accessor :name, :ingredients, :link
     
-    @@allrecipes = []
+    @@all = []
 
-    def initialize
+    def initialize(name, ingredients, link)
       @name = name
       @ingredients = ingredients
       @link = link
     end
   
     def self.all
-      @@allrecipes << API.all[0][0]
+      @@all << API.all
       #check out 42:00 of Avi's video.  
       binding.pry
+    end
+
+    def self.new_from_hash
+      name = API.all[0][0]["title"]
+      ingredients = API.all[0][0]["ingredients"]
+      link = API.all[0][0]["href"]
+
+      new_recipe = Recipe.new(name, ingredients, link)
+        binding.pry
     end
 
   end
