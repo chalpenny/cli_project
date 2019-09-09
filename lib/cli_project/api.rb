@@ -14,8 +14,7 @@ module CliProject
     end
 
     def import
-      list_recipes.collect do |x| Recipe.new_from_hash(x)
-      end
+      list_recipes.collect {|x| Recipe.new_from_hash(x)}
     end
 
   end

@@ -17,6 +17,9 @@ module CliProject
           print_recipes
           puts "What number recipe would you like to see? (1-x)"
           @input == gets.chomp 
+            if @input == "exit"
+
+              
           # Show the corresponding ingredients list. 
           puts "Do you want to get the link to recipe, or go back to list?"  
           puts "or type 'menu' or 'exit'"
@@ -39,6 +42,7 @@ module CliProject
           puts "Sorry, we don't have any recipes that match.  Try typing 'menu' to start again"
         end
       end
+      end
       puts "I hope you found a great recipe! Happy cooking!"
      end
          
@@ -53,9 +57,9 @@ module CliProject
      end
      
      def print_recipes
-      Recipe.all.collect
-      .with_index(1) do |recipe, index|
-        puts "#{index}. #{recipe}"
+      API.new.import.collect.with_index do |recipe, index|
+        puts "#{index+1}. #{recipe.name}"
+       # binding.pry
      end
     end
 
