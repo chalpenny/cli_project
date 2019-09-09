@@ -20,13 +20,12 @@ module CliProject
       binding.pry
     end
 
-    def self.new_from_hash
-      name = API.all[0][0]["title"]
-      ingredients = API.all[0][0]["ingredients"]
-      link = API.all[0][0]["href"]
+    def self.new_from_hash(hash)
+      name = hash["title"]
+      ingredients = hash["ingredients"]
+      link = hash["href"]
 
       new_recipe = Recipe.new(name, ingredients, link)
-        binding.pry
     end
 
   end
