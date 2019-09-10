@@ -15,31 +15,30 @@ module CliProject
           menu
         elsif @input == "1"
           print_recipes
-          puts "What number recipe would you like to see? (1-#{print_recipes.count})"
-          @input == gets.chomp 
-            #if @input == "exit"
-          # Show the corresponding ingredients list. 
-          # OR  ... show recipes and ingredients for option 1.  Option 2 is search by ingredient.  To show ingredients list , type "ingredients".
-          # No option 3 needed
-          respond
-          binding.pry
-          puts "Do you want to get the link to recipe, or go back to list?"  
+          puts "What number recipe would you like to see? (1-#{recipes_list.count})"
+
+          puts "-method to display ingredients and link for recipe number-"
+         
+          puts "Type '1' to see the recipe list again"  
           puts "or type 'menu' or 'exit'"
          
         elsif @input == "2"
           print_ingredients
-          puts "What ingredient would you like to see recipes for? (type 1 -x)"
+          puts "What ingredient would you like to see recipes for?"
+
+          puts "-method to display recipes and link by word search-"
+
+          puts "Type '2' to see the ingredients list again"
           puts "or type 'menu' or 'exit'"
           
-          # Get input, return recipe names. Ask if they want to get the link to recipe, or go back to list
         elsif @input == "3"
-          # You can search by up to 3 ingredients
-          # Enter ingredient 1:
-          # Enter ingredient 2:
-          # Enter ingredient 3:
-          # Here are your results:
-          # Sorry, nothing matches your search.  Try again, or press 2 to see the list of possible ingredients. / 
-          #'type 'menu' to go back to menu' / or type 'menu'
+          puts "Enter an ingredient to search for:" 
+
+          puts "-method to return by word search or puts..
+          Here are your results:  OR
+          Sorry, we don't have any recipes that match your search.  Try again, or type '2' to see a list of possible ingredients.-"
+
+          puts "or type 'menu' or 'exit'"
         elsif @input == "exit" 
 
         else
@@ -52,7 +51,7 @@ module CliProject
     def menu
       puts <<-LIST
        1. Browse recipes
-       2. Browse ingredients
+       2. Browse recipes by ingredient
        3. Search by ingredient
        Type 'menu' to see the menu again
        or type "exit" at any time.
@@ -60,26 +59,30 @@ module CliProject
      end
      
      
-     def print_recipes
-      API.new.import.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.name}"}
+     def recipes_list
+      API.new.import
        # binding.pry
     end
 
-    def respond
-      if print_recipes.index+1 == @input
-        print_recipes[@input.to_i]
-      end
+    def print_recipes
+      recipes_list.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.name}"}
+       # binding.pry
     end
 
+    # def respond
+    #   if print_recipes.index+1 == @input
+    #     print_recipes[@input.to_i]
+    #   end
+    # end
 
     def print_ingredients
-      API.new.import.collect do |recipe| puts "#{recipe.ingredients}"
-      #  binding.pry
-      end.uniq
+      recipes_list.collect do |recipe| "#{recipe.ingredients}"
+      binding.pry
+      end.join(", ")
      # binding.pry
     end
 
-    def checkprompt_for_input
+    def check_input
       @input = gets.chomp
      # method to make sure it's valid? or to check for 'menu' or 'exit'?
     end
