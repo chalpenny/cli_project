@@ -27,10 +27,10 @@ module CliProject
       new_recipe = Recipe.new(name, ingredients, link)
     end
 
-    def self.find(number)
-      self.all.find do |number| recipe.index == number
-        puts recipe.name
-      end
+    def self.find(input)
+      self.all.index(input)
+       # puts "#{index}. #{x.name}:"
+       binding.pry
     end
 
   end

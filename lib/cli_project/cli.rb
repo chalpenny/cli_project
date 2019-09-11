@@ -6,7 +6,7 @@ module CliProject
   class CLI  
      
      def start 
-      CliProject::API.new.import
+      #CliProject::API.new.import
        puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
        @input = nil 
        menu
@@ -16,11 +16,12 @@ module CliProject
           menu
         elsif @input == "1"
           print_recipes
+          #binding.pry
           puts "What number recipe would you like to see? (1-#{recipes_list.count})"
             @input == gets.chomp
             display_recipe(@input)
-          puts "Type '1' to see the recipe list again"  
-          puts "or type 'menu' or 'exit'"
+            puts "Type '1' to see the recipe list again"  
+            puts "or type 'menu' or 'exit'"
          
         elsif @input == "2"
           puts "-method to display ingredients"
