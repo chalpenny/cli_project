@@ -12,12 +12,11 @@ module CliProject
       @name = name
       @ingredients = ingredients
       @link = link
+      @@all << self
     end
   
     def self.all
-      @@all << API.all
-      #check out 42:00 of Avi's video.  
-      binding.pry
+      @@all
     end
 
     def self.new_from_hash(hash)
@@ -26,6 +25,12 @@ module CliProject
       link = hash["href"]
 
       new_recipe = Recipe.new(name, ingredients, link)
+    end
+
+    def self.find(number)
+      self.all.find do |number| recipe.index == number
+        puts recipe.name
+      end
     end
 
   end
