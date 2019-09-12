@@ -31,7 +31,7 @@ module CliProject
       recipe = self.all[input.to_i-1]
       puts "#{recipe.name}"
       puts "Link to recipe: #{recipe.link}"
-      puts "Main ingredients: #{recipe.ingredients}"
+      puts "Ingredients: #{recipe.ingredients}"
         #binding.pry
     end
 

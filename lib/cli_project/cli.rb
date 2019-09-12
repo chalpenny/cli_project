@@ -5,7 +5,10 @@ puts "Hello from CliProject::CLI"
 module CliProject
   class CLI  
      
-     def start 
+      def run_finder
+      end
+      
+     def start_search
        puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
        @input = nil 
        menu
@@ -13,7 +16,7 @@ module CliProject
         @input = gets.chomp
         if @input == "menu"
           menu
-          
+
         elsif @input == "1"
           print_recipes
           @input = gets.chomp #-verify that input is not letters or it will return 0-
@@ -21,7 +24,7 @@ module CliProject
           puts ""
           puts "Type '1' to see the list of recipes again"  
           menu_or_exit
-          @input = gets.chomp #-what happens if they enter a number not on the list?-
+          get_input(@input) #-what happens if they enter a number not on the list?-
          
         elsif @input == "2"
           print_ingredients
@@ -75,13 +78,17 @@ module CliProject
       puts "What ingredient would you like to see recipes for?"
     end
 
-    # def get_input(input)
-    #  # if !@input == Integer
-    #   #  puts "Please enter a number from the list"
-    #   #else 
-    #     input = @input = gets.chomp.to_i
-    #   #end
-    # end
+    def get_input(input)
+      @input = gets.chomp
+      if @input == "exit"
+
+      elsif @input == "menu"
+          menu
+      elsif input == Integer
+        input = @input.gets.chomp.to_i
+      else puts "Please enter a number from the list"      
+      end
+    end
     
     def return_recipe(input)
       Recipe.find(@input)
