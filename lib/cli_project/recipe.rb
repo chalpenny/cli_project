@@ -28,9 +28,11 @@ module CliProject
     end
 
     def self.find(input)
-      self.all.index(input)
-       # puts "#{index}. #{x.name}:"
-       binding.pry
+      recipe = self.all[input.to_i-1]
+      puts "#{recipe.name}"
+      puts "Link to recipe: #{recipe.link}"
+      puts "Main ingredients: #{recipe.ingredients}"
+        #binding.pry
     end
 
   end
