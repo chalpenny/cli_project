@@ -32,7 +32,7 @@ module CliProject
       puts "#{recipe.name}"
       puts "Link to recipe: #{recipe.link}"
       puts "Ingredients: #{recipe.ingredients}"
-        #binding.pry
+        #binding.pry -remove puts and "" to just return result?
     end
 
   end

@@ -41,7 +41,8 @@ module CliProject
           puts "or type 'menu' or 'exit'"
          # @input = gets.chomp
           start_search
-
+          menu_method
+          exit_method
         elsif @input == "3"
           puts "Enter an ingredient to search for:" 
           ingredient_search
@@ -50,7 +51,7 @@ module CliProject
           puts "Type '3' to search again"
           menu_or_exit
 
-        elsif @input == "exit" 
+       # elsif @input == "exit" 
 
         else
           puts "Sorry, we don't have any recipes that match your search.  Try typing 'menu' to start again"
@@ -78,10 +79,21 @@ module CliProject
       puts "What number recipe would you like to see? (1-#{recipes_list.count})"
     end
 
+    # def print_ingredients
+    #   recipes_list.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.ingredients}"}
+    #   puts ""
+    #  # Recipe.all.collect {|recipe| "#{recipe.ingredients}"}
+    #   puts "What ingredient would you like to see recipes for?"
+    # end
+     # OR Recipe.all.collect {|recipe| "#{recipe.ingredients}"}
+
     def print_ingredients
-      recipes_list.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.ingredients}"}
+      ingredients = []
+      ingredients = recipes_list.collect do |recipe| "#{recipe.ingredients}"
+      end
+      data = ingredients.join(", ").split(", ").uniq
+      data.collect.with_index {|name, index| puts "#{index+1}. #{name}"}
       puts ""
-     # Recipe.all.collect {|recipe| "#{recipe.ingredients}"}
       puts "What ingredient would you like to see recipes for?"
     end
 
