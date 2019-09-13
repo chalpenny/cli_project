@@ -5,34 +5,42 @@ puts "Hello from CliProject::CLI"
 module CliProject
   class CLI  
      
-      def run_finder
-      end
-      
-     def start_search
-       puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
-       @input = nil 
-       menu
-       while @input != "exit" 
-        @input = gets.chomp
-        if @input == "menu"
+      def run
+        puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
           menu
+          start_search
+      end
 
-        elsif @input == "1"
+     def start_search
+       @input = nil 
+       #menu
+       @input = gets.chomp
+       #while @input != "exit" 
+        # @input = gets.chomp
+        # if @input == "menu"
+        #   menu
+        menu_method
+        exit_method
+        if @input == "1"
           print_recipes
           @input = gets.chomp #-verify that input is not letters or it will return 0-
           return_recipe(@input)
           puts ""
           puts "Type '1' to see the list of recipes again"  
-          menu_or_exit
-          get_input(@input) #-what happens if they enter a number not on the list?-
+          puts "or type 'menu' or 'exit'"
+         # @input = gets.chomp
+          start_search
+         # get_input(@input) #-what happens if they enter a number not on the list?-
          
         elsif @input == "2"
           print_ingredients
-          get_input
-          return_recipe(input)
-          get_input
-          puts "Type '2' to see the list of ingredients again"
-          menu_or_exit
+          @input = gets.chomp #-verify that input is not letters or it will return 0-
+          return_recipe(@input)
+          puts ""
+          puts "Type '2' to see the list of recipes again"  
+          puts "or type 'menu' or 'exit'"
+         # @input = gets.chomp
+          start_search
 
         elsif @input == "3"
           puts "Enter an ingredient to search for:" 
@@ -46,9 +54,7 @@ module CliProject
 
         else
           puts "Sorry, we don't have any recipes that match your search.  Try typing 'menu' to start again"
-        end
       end
-      puts "I hope you found a great recipe! Happy cooking!"
      end
          
 
@@ -70,11 +76,12 @@ module CliProject
       recipes_list.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.name}"}
       puts ""
       puts "What number recipe would you like to see? (1-#{recipes_list.count})"
-       # binding.pry
     end
 
     def print_ingredients
-      Recipe.all.collect {|recipe| "#{recipe.ingredients}"}
+      recipes_list.collect.with_index {|recipe, index| puts "#{index+1}. #{recipe.ingredients}"}
+      puts ""
+     # Recipe.all.collect {|recipe| "#{recipe.ingredients}"}
       puts "What ingredient would you like to see recipes for?"
     end
 
@@ -84,9 +91,8 @@ module CliProject
 
       elsif @input == "menu"
           menu
-      elsif input == Integer
-        input = @input.gets.chomp.to_i
-      else puts "Please enter a number from the list"      
+      else @input = gets.chomp
+     # else puts "Please enter a number from the list"      
       end
     end
     
@@ -94,9 +100,26 @@ module CliProject
       Recipe.find(@input)
     end
 
-    def menu_or_exit
-      puts "or type 'menu' or 'exit'"
+    def menu_method
+      if @input == "menu"
+          menu
+          start_search
+      end
+      end
+    
+    def exit_method
+      if @input == "exit"
+        puts "I hope you found a great recipe! Happy cooking!"
+      end
     end
+    # def menu_or_exit
+    #   #puts "or type 'menu' or 'exit'"
+    #   if @input == "exit"
+
+    #   else @input == "menu"
+    #       menu
+    #   end
+    # end
 
       #instructions - enter an ingredient(s), keywords, 
       #return a list of recipes including that ingredient
