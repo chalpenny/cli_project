@@ -32,7 +32,25 @@ module CliProject
       puts "#{recipe.name}"
       puts "Link to recipe: #{recipe.link}"
       puts "Ingredients: #{recipe.ingredients}"
-        #binding.pry -remove puts and "" to just return result?
+    end
+
+    def self.find_by_name(input)
+      recipe = []      
+      recipe = self.all.each {|recipe| recipe.ingredients}
+      binding.pry
+       recipe.select do |string| 
+        if string.split(", ") == input
+      binding.pry
+      #self.all.select |
+      puts "#{recipe.name}"
+      puts "Link to recipe: #{recipe.link}"
+      puts "Ingredients: #{recipe.ingredients}"
+
+        #take string that matches index that was called as input OR have input be a string(strip and downcase)
+        #take that input and iterate across the ingredients of the recipes, splitting as you do so to check each word
+        #possibly lose option 2.  Option 3 has a choice for ingredients to choose from list
+      end
+    end
     end
 
   end
