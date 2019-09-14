@@ -12,28 +12,24 @@ module CliProject
         while @input != "exit" 
         @input = gets.chomp
           if @input == "menu"
-           menu
+            menu
+
           elsif @input == "1"
-          print_recipes
-          @input = gets.chomp #-verify that input is not letters or it will return 0-
-          return_recipe(@input)
-          puts ""
-          puts "Type '1' to see the list of recipes again"  
-          puts "or type 'menu' or 'exit'"
+            print_recipes
+            @input = gets.chomp #-verify that input is not letters or it will return 0-
+            return_recipe(@input)
 
           elsif @input == "2"
-          puts "Enter an ingredient to search for:" 
-          @input = gets.chomp
-          return_recipes_by_ingredient(@input)
-          #"Here are your results:  OR
-          #Sorry, we don't have any recipes that match your search.  Try again, or type '2' to see a list of possible ingredients.-"
-          puts "Type '3' to search again"
+            print_ingredients         
+            @input = gets.chomp
+            return_recipes_by_ingredient(@input)
+            
           elsif @input == "exit"  
           else 
-          puts "Sorry, we don't have any recipes that match your search. Try typing 'menu' to start again" 
+            puts "Sorry, we don't have any recipes that match your search. Try typing 'menu' to start again" 
           end 
         end 
-      puts "I hope you found a great recipe! Happy cooking!" 
+        puts "I hope you found a great recipe! Happy cooking!" 
     end
          
 
@@ -58,6 +54,9 @@ module CliProject
     
     def return_recipe(input)
       Recipe.find(@input)
+      puts ""
+          puts "Type '1' to see the list of recipes again"  
+          puts "or type 'menu' or 'exit'"
     end
 
     def print_ingredients
@@ -72,6 +71,8 @@ module CliProject
 
     def return_recipes_by_ingredient(input)
       Recipe.find_by_name(@input)
+          puts "Sorry, we don't have any recipes that match your search.  Try again, or type '2' to see a list of possible ingredients.-"
+          puts "Type '3' to search again"
     end
 
     def get_input(input)
@@ -82,19 +83,6 @@ module CliProject
           menu
       else @input = gets.chomp
      # else puts "Please enter a number from the list"      
-      end
-    end
-
-    # def menu_method
-    #   if @input == "menu"
-    #       menu
-    #       start_search
-    #   end
-    #   end
-    
-    def exit_method
-      if @input == "exit"
-        puts "I hope you found a great recipe! Happy cooking!"
       end
     end
     
