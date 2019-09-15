@@ -1,4 +1,3 @@
-puts "Hello from CliProject::API"
 
 require "open-uri"
 require "json"

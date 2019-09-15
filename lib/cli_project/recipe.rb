@@ -1,6 +1,3 @@
-puts "Hello from CliProject::Recipe"
-
-require "pry"
 
 module CliProject
   class Recipe 
@@ -19,7 +16,7 @@ module CliProject
       @@all
     end
 
-    def self.new_from_hash(hash) #try .sample(10) or (20)
+    def self.new_from_hash(hash) 
       name = hash["title"]
       ingredients = hash["ingredients"]
       link = hash["href"]
@@ -32,22 +29,6 @@ module CliProject
       puts "#{recipe.name}"
       puts "Link to recipe: #{recipe.link}"
       puts "Ingredients: #{recipe.ingredients}"
-    end
-
-    def self.find_by_ingredient(input)
-      recipe = self.all.collect {|recipe| recipe.ingredients}
-       recipe.each do |string| 
-        string.split(", ").uniq.each do |word| 
-        if word == input
-          
-         # binding.pry
-        #puts "#{data.name}"
-        #binding.pry
-        #puts "Link to recipe: #{recipe.link}"
-        #puts "Ingredients: #{recipe.ingredients}"
-        end
-       end
-      end
     end
 
   end

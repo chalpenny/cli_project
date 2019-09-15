@@ -1,5 +1,7 @@
 Welcome to your handy recipe locator!
 
+This Ruby gem provides a quick CLI to access recipe links from the RecipePuppy API.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Once installed follow the prompts to search recipes by name.
 
 ## Development
 

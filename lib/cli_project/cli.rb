@@ -1,6 +1,3 @@
-    require 'pry'
-puts "Hello from CliProject::CLI"
-
 
 module CliProject
   class CLI  
@@ -16,13 +13,8 @@ module CliProject
 
           elsif @input == "1"
             print_recipes
-            get_input
+            @input = gets.chomp
             return_recipe(@input)
-
-          elsif @input == "2"
-            print_ingredients         
-            get_input
-            return_recipes_by_ingredient(@input)
             
           elsif @input == "exit"  
           else 
@@ -35,9 +27,8 @@ module CliProject
 
     def menu
       puts <<-LIST
-       1. Browse recipes
-       2. Search by ingredient
-       Type 'menu' to see the menu again
+       Type '1' to browse recipes.
+       Type 'menu' to see the menu 
        or type "exit" at any time.
        LIST
      end
@@ -58,31 +49,6 @@ module CliProject
       puts "Type '1' to see the list of recipes again"  
       puts "or type 'menu' or 'exit'"
     end
-
-    def print_ingredients
-      ingredients = []
-      ingredients = recipes_list.collect do |recipe| "#{recipe.ingredients}"
-      end
-      data = ingredients.join(", ").split(", ").uniq
-      data.collect.with_index {|name, index| puts "#{index+1}. #{name}"}
-      puts ""
-      puts "What number ingredient would you like to see recipes for? (1-#{data.count})"
-    end
-
-    def return_recipes_by_ingredient(input)
-      Recipe.find(@input)
-      puts ""
-      puts "Type '2' to see the list of ingredients again"  
-      puts "or type 'menu' or 'exit'"
-    end
-
-    def get_input
-      input = gets.chomp
-       if @input.is_a?(Integer) && @input.between?(1,10)
-       @input
-       #else puts "Please enter a number from the list"      
-       end
-     end
     
   end
 end
