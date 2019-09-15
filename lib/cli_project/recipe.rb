@@ -19,7 +19,7 @@ module CliProject
       @@all
     end
 
-    def self.new_from_hash(hash)
+    def self.new_from_hash(hash) #try .sample(10) or (20)
       name = hash["title"]
       ingredients = hash["ingredients"]
       link = hash["href"]
@@ -34,33 +34,20 @@ module CliProject
       puts "Ingredients: #{recipe.ingredients}"
     end
 
-    def self.find_by_name(input)
-      # recipe = []      
-      # recipe = self.all.collect {|recipe| recipe.ingredients}
-      # binding.pry
-      #  data = []
-      #  data = recipe.each do |string| 
-      #   if string.split(", ") == input
-      # binding.pry
-      # #self.all.select |
-
-      recipe = []      
+    def self.find_by_ingredient(input)
       recipe = self.all.collect {|recipe| recipe.ingredients}
        recipe.each do |string| 
-        string.split(", ").uniq.each do |x| 
-        if x == input
-    
-      puts "#{recipe.name}"
-      puts "Link to recipe: #{recipe.link}"
-      puts "Ingredients: #{recipe.ingredients}"
+        string.split(", ").uniq.each do |word| 
+        if word == input
+          
+         # binding.pry
+        #puts "#{data.name}"
+        #binding.pry
+        #puts "Link to recipe: #{recipe.link}"
+        #puts "Ingredients: #{recipe.ingredients}"
+        end
+       end
       end
-    end
-
-        #take string that matches index that was called as input OR have input be a string(strip and downcase)
-        #take that input and iterate across the ingredients of the recipes, splitting as you do so to check each word
-        #possibly lose option 2.  Option 3 has a choice for ingredients to choose from list
-      
-    end
     end
 
   end

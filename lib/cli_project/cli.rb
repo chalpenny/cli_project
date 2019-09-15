@@ -16,12 +16,12 @@ module CliProject
 
           elsif @input == "1"
             print_recipes
-            @input = gets.chomp #-verify that input is not letters or it will return 0-
+            get_input
             return_recipe(@input)
 
           elsif @input == "2"
             print_ingredients         
-            @input = gets.chomp
+            get_input
             return_recipes_by_ingredient(@input)
             
           elsif @input == "exit"  
@@ -55,8 +55,8 @@ module CliProject
     def return_recipe(input)
       Recipe.find(@input)
       puts ""
-          puts "Type '1' to see the list of recipes again"  
-          puts "or type 'menu' or 'exit'"
+      puts "Type '1' to see the list of recipes again"  
+      puts "or type 'menu' or 'exit'"
     end
 
     def print_ingredients
@@ -66,25 +66,23 @@ module CliProject
       data = ingredients.join(", ").split(", ").uniq
       data.collect.with_index {|name, index| puts "#{index+1}. #{name}"}
       puts ""
-      puts "What ingredient would you like to see recipes for?"
+      puts "What number ingredient would you like to see recipes for? (1-#{data.count})"
     end
 
     def return_recipes_by_ingredient(input)
-      Recipe.find_by_name(@input)
-          puts "Sorry, we don't have any recipes that match your search.  Try again, or type '2' to see a list of possible ingredients.-"
-          puts "Type '3' to search again"
+      Recipe.find(@input)
+      puts ""
+      puts "Type '2' to see the list of ingredients again"  
+      puts "or type 'menu' or 'exit'"
     end
 
-    def get_input(input)
-      @input = gets.chomp
-      if @input == "exit"
-
-      elsif @input == "menu"
-          menu
-      else @input = gets.chomp
-     # else puts "Please enter a number from the list"      
-      end
-    end
+    def get_input
+      input = gets.chomp
+       if @input.is_a?(Integer) && @input.between?(1,10)
+       @input
+       #else puts "Please enter a number from the list"      
+       end
+     end
     
   end
 end
