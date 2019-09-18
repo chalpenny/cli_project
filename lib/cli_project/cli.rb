@@ -4,8 +4,12 @@ module CliProject
 
      def run
       puts "Hello and welcome to your recipe finder CLI! What do you want to search for?"
-      @input = nil 
-       menu
+        @input = nil 
+        menu
+        start_search
+      end
+
+      def start_search
         while @input != "exit" 
         @input = gets.chomp
           if @input == "menu"
@@ -13,7 +17,7 @@ module CliProject
 
           elsif @input == "1"
             print_recipes
-            @input = gets.chomp
+            get_input
             return_recipe(@input)
             
           elsif @input == "exit"  
@@ -50,5 +54,15 @@ module CliProject
       puts "or type 'menu' or 'exit'"
     end
     
+    def get_input
+     @input = gets.chomp
+      if @input.to_i.to_s == @input && @input.to_i.between?(1,10)
+      puts "Great choice! Check this out:"
+      else
+        puts "Please type a number from the list"  
+        start_search
+      end
+    end
+
   end
 end
